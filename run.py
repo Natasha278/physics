@@ -1,24 +1,48 @@
 import math
+import scipy
 
 # ----------------    DIA 2 ----------------------
 
 # constants
 g = 9.81 # m / s^2
+μ = 0.02 # friction coefficient has no units
+
+# assumptions
 m = 50 # kg
-μ = 0.02 # friction coefficient for ice is []
+F_push_horizontal = 100 # Push force is kg * m / s^2
+F_push_vertical = 300 # Push force is kg * m / s^2
+
 
 # μ = F/N, where F is the frictional force and N is the normal force.
 N = m * g # Normal force is kg * m / s^2
 F_r = μ * N # Friction force is kg * m / s^2
 
-# Push force
-F_push = 100 # Push force is kg * m / s^2
-F_total = F_push - F_r
+# momento 0 (time 0) - The ice skater is standing still on the ice, right before they push off with their skate
+v_x_m0 = 0 # velocidad horizontal (x) initial momento 0 (m / s)
+v_y_m0 = 0 # velocidad vertical (y) initial momento 0 (m / s)
+t_m0 = 0 # tiempo initial momento 0 (s)
+x_m0 = 0
+y_m0 = 0
+F_x_m0 = F_push_horizontal - F_r # Total force acting on your body
+F_y_m0 = 0 # Total force acting on your body vertically
 
-# momento 1
-v_0_m1 = 0 # velocidad initial momento 1 (m / s)
-t_0_m1 = 0 # tiempo initial momento 1 (s)
-t_f_m1 = 1 # tiempo final momento 1 (s) ELEGIR CUANTO TIEMPO SE ACELERA.
+# momento 1 (time 1) - The ice skater is gliding forward on the ice, and is about to jump
+t_m1 = 3.0 # time since moment 0
+v_y_m1 = 0 # velocidad vertical initial momento 0 (m / s)
+y_m1 = 0
+
+# F = m*a and v = a*t
+a_x_m1 = (F_x_m0 / m) # acceleration horizontal (x) momento 1 (m / s^2)
+v_x_m1 = a_x_m1*t_m1 # velocidad horizontal (x) momento 1 (m / s)
+x_m1 = v_x_m1*t_m1 # position horizontal (x) momento 1 (m)
+
+F_x_m1 = F_x_m0
+F_y_m1 = F_push_vertical
+
+
+# momento 2 (time 2) - the ice skater is at the height of their jump
+
+# momento 3 (time 3) - the ice skater lands on the ice
 
 # f_total = m*a
 # a = f / m
