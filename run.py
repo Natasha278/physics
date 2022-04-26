@@ -1,19 +1,56 @@
 import math
-from constants import *
 import scipy
-GRAVITY
+from constants import *
+from config import *
+
+
 # ---------Just to know the constant of the mass
 # My mass is 50 Kg
-m1 = 50
-m2 = input("Hello, do you know what it is your weigh? (type yes or no) ")[
+input_mass = input("Hello, do you know what it is your weigh? (type yes or no) ").strip()[
     0].lower()
-if m2 == 'n':
-    m2 = {m1}
-    print(f'the mass now is my weigh, {m1} kg')
-elif m2 == 'y':
-    w = input("type your weigh, (in kg) ")
-    print(f'your mass now is {w/9.81}')
-# His/Her mass is "w"
+# mass 2
+
+
+def calc_acceleration():
+    distance_travelled = (2 * PI * radius) / 2
+    return (distance_travelled * 2) / (time ** 2)
+
+
+acceleration = calc_acceleration()
+
+if input_mass == 'n':
+    input_mass = default_mass
+    # His/Her mass is "w"
+    print(f'the mass now is my weigh, {default_mass} kg')
+    # -------------------------Moment 1: Firstly we move forward in a curve of 180º = 3,14 = π radians
+    force_1 = default_mass * acceleration
+    print(force_1)
+    # -------------------------Moment 2:
+elif input_mass == 'y':
+    weight = int(input("type your weigh, (in kg) "))
+    print(f'your mass now is {weight} Kg')
+    # -------------------------Moment 1: Firstly we move forward in a curve of 180º = 3,14 = π radians
+    force_1 = weight * acceleration
+    print(force_1)
+    # -------------------------Moment 2:
+
+"""
+# -------------------------Moment 1: Firstly we move forward in a curve of 180º = 3,14 = π radians
+# Other constants
+π = 3.14
+θ = 2 * π
+r = 4.5
+# Space = Perimeter of the half of the circle
+S = (2 * π * r) / 2
+# S = Time * velocity
+# The avarage of time when a skater do an exercise before jump is 3 seconds 
+t = 3
+vf0 = S / t
+# Now we can calculate the acceleration  
+#S = 1/2 a*t^2
+a = (S * 2) / t ^ 2
+F = m1 * a
+"""
 
 #print("Ok, your total spins are the following")
 #print("And your efficiency is the following")
@@ -76,7 +113,7 @@ elif m2 == 'y':
 #t_0_m2 = t_f_m1
 #v_0_m2 = v_f_m1
 # θ = math.radians(45)  # 45 degrees in radians
-#vueltas = 5
+#spins = 5
 #t_f_m2 = t_0_m2
 
 # F_s =
@@ -92,7 +129,7 @@ elif m2 == 'y':
 # a
 # comment
 
-'''
+"""
  this 
  is  
  a
@@ -120,4 +157,4 @@ print("Total time in the air is {:.2f}".format(total_time))
 # int => integer => 1
 # float = 1.0
 # string = "asdfasdfasdf"
-'''
+"""
